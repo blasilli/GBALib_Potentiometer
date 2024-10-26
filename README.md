@@ -1,4 +1,4 @@
-# GBALib Potentiometer v1.0.0
+# GBALib Potentiometer v2.0.0
 
 ![Arduino Logo](./extras/ArduinoCommunityLogo.png)
 
@@ -27,24 +27,24 @@ The library is included in the **Arduino Library Manager**. You can install it e
    #include <GBALib_Potentiometer.h>
    ```
 
-2. **Instantiate the GBALib_Potentiometer object:**
+2. **Instantiate the Pot object:**
    ```cpp
    // Specify the pin to which the potentiometer is connected
-   GBALib_Potentiometer pot(A1); 
+   Pot pot(A1); 
    ```
 
 ---
 
 ## Documentation
-## Class: `GBALib_Potentiometer`
+## Class: `Pot`
 
-### Constructor: `GBALib_Potentiometer(uint8_t pin)`
+### Constructor: `Pot(uint8_t pin)`
 - **Purpose**: Initializes the potentiometer object with the specified pin.
 - **Parameters**:
   - `pin` (uint8_t): The analog pin number to which the potentiometer is connected.
 - **Example**:
     ```cpp
-    GBALib_Potentiometer potentiometer(A0);
+    Pot potentiometer(A0);
     ```
 
 ### Method: `void range(int min, int max)`
@@ -118,20 +118,20 @@ The library is included in the **Arduino Library Manager**. You can install it e
 ```cpp
 #include <GBALib_Potentiometer.h>
 
-GBALib_Potentiometer potentiometer(A0);
+Pot pot(A0);
 
 void setup() {
   Serial.begin(9600);
   
-  // Set default range and step
-  potentiometer.range(0, 100);
-  potentiometer.step(5);
+  // Set range and step
+  pot.range(0, 100);
+  pot.step(5);
 }
 
 void loop() {
-  int raw = potentiometer.input();
-  float voltage = potentiometer.voltage();
-  int mapped = potentiometer.value();
+  int raw = pot.input();
+  float voltage = pot.voltage();
+  int mapped = pot.value();
   
   Serial.print("Raw: ");
   Serial.print(raw);

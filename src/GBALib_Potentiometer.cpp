@@ -16,7 +16,7 @@
  * 
  * @param pin  The analog pin number to which the potentiometer is connected.
  */
-GBALib_Potentiometer::GBALib_Potentiometer(uint8_t pin) {
+Pot::Pot(uint8_t pin) {
   this->pin = pin;
   
   this->vMin = 0;
@@ -32,7 +32,7 @@ GBALib_Potentiometer::GBALib_Potentiometer(uint8_t pin) {
  * @param min  The minimum value for the potentiometer range.
  * @param max  The maximum value for the potentiometer range.
  */
-void GBALib_Potentiometer::range(int min, int max) {
+void Pot::range(int min, int max) {
   this->vMin = min;
   this->vMax = max;
 }
@@ -42,7 +42,7 @@ void GBALib_Potentiometer::range(int min, int max) {
  * 
  * @param step  The step size for the mapped output values.
  */
-void GBALib_Potentiometer::step(int step) {
+void Pot::step(int step) {
   this->vStep = step;
 }
 
@@ -52,7 +52,7 @@ void GBALib_Potentiometer::step(int step) {
  * 
  * @return int The average analog reading of the potentiometer.
  */
-int GBALib_Potentiometer::input() {
+int Pot::input() {
   const int numReadings = 5;
   float sum = 0;
   for (int i = 0; i < numReadings; i++) {
@@ -68,7 +68,7 @@ int GBALib_Potentiometer::input() {
  * 
  * @return float The calculated voltage value.
  */
-float GBALib_Potentiometer::voltage() {
+float Pot::voltage() {
   int inVal = this->input();
   float voltage = inVal * (5.0 / 1023.0);
   return voltage;
@@ -83,7 +83,7 @@ float GBALib_Potentiometer::voltage() {
  * @param max  The maximum value for the custom range.
  * @return int The mapped potentiometer value within the custom range.
  */
-int GBALib_Potentiometer::valueToCustomRange(int min, int max) {
+int Pot::valueToCustomRange(int min, int max) {
   int inVal = this->input();
   return map(inVal, 0, 1023, min, max);
 }
@@ -97,7 +97,7 @@ int GBALib_Potentiometer::valueToCustomRange(int min, int max) {
  * @param step  The step size for the mapped output values.
  * @return int The mapped and adjusted potentiometer value within the custom range.
  */
-int GBALib_Potentiometer::valueToCustomRange(int min, int max, int step) {
+int Pot::valueToCustomRange(int min, int max, int step) {
   int mappedValue = this->valueToCustomRange(min, max);
   if (step > 0) {
     int mod = mappedValue % step;
@@ -125,6 +125,6 @@ int GBALib_Potentiometer::valueToCustomRange(int min, int max, int step) {
  * 
  * @return int The mapped and adjusted potentiometer value.
  */
-int GBALib_Potentiometer::value() {
+int Pot::value() {
   return this->valueToCustomRange(this->vMin, this->vMax, this->vStep);
 }

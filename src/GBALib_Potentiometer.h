@@ -11,7 +11,7 @@
 
 #include <Arduino.h>
 
-class GBALib_Potentiometer {
+class Pot {
   public:
     /**
      * Constructor to initialize a potentiometer object on the specified pin.
@@ -19,7 +19,7 @@ class GBALib_Potentiometer {
      * 
      * @param pin  The analog pin number to which the potentiometer is connected.
      */
-    GBALib_Potentiometer(uint8_t pin);
+    Pot(uint8_t pin);
     
     /**
      * Set the default range for potentiometer readings.
