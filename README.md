@@ -1,4 +1,4 @@
-# GBALib Potentiometer v2.0.0
+# GBALib Potentiometer v2.1.0
 
 ![Arduino Logo](./extras/ArduinoCommunityLogo.png)
 
@@ -45,6 +45,29 @@ The library is included in the **Arduino Library Manager**. You can install it e
 - **Example**:
     ```cpp
     Pot potentiometer(A0);
+    ```
+
+### Constructor: `Pot(uint8_t pin, int min, int max)`
+- **Purpose**: Initializes the potentiometer object with the specified pin and range.
+- **Parameters**:
+  - `pin` (uint8_t): The analog pin number to which the potentiometer is connected.
+  - `min` (int): The minimum value for the potentiometer range.
+  - `max` (int): The maximum value for the potentiometer range.
+- **Example**:
+    ```cpp
+    Pot potentiometer(A0, 0, 100); // Maps readings between 0 and 100.
+    ```
+
+### Constructor: `Pot(uint8_t pin, int min, int max, int step)`
+- **Purpose**: Initializes the potentiometer object with the specified pin and range and step.
+- **Parameters**:
+  - `pin` (uint8_t): The analog pin number to which the potentiometer is connected.
+  - `min` (int): The minimum value for the potentiometer range.
+  - `max` (int): The maximum value for the potentiometer range.
+  - `step` (int): The step size for the mapped output values.
+- **Example**:
+    ```cpp
+    Pot potentiometer(A0, 0, 100, 5); // Maps readings between 0 and 100. Increments values by steps of 5.
     ```
 
 ### Method: `void range(int min, int max)`

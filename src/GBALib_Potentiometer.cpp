@@ -27,6 +27,43 @@ Pot::Pot(uint8_t pin) {
 }
 
 /**
+ * Constructor to initialize a potentiometer object on the specified pin.
+ * Sets the default value range and step size.
+ * 
+ * @param pin  The analog pin number to which the potentiometer is connected.
+ * @param min  The minimum value for the potentiometer range.
+ * @param max  The maximum value for the potentiometer range.
+ */
+Pot::Pot(uint8_t pin, int min, int max) {
+  this->pin = pin;
+  
+  this->vMin = min;
+  this->vMax = max;
+  this->vStep = 1;
+
+  pinMode(this->pin, INPUT);
+}
+
+/**
+ * Constructor to initialize a potentiometer object on the specified pin.
+ * Sets the default value range and step size.
+ * 
+ * @param pin  The analog pin number to which the potentiometer is connected.
+ * @param min  The minimum value for the potentiometer range.
+ * @param max  The maximum value for the potentiometer range.
+ * @param step  The step size for the mapped output values.
+ */
+Pot::Pot(uint8_t pin, int min, int max, int step) {
+  this->pin = pin;
+  
+  this->vMin = min;
+  this->vMax = max;
+  this->vStep = step;
+
+  pinMode(this->pin, INPUT);
+}
+
+/**
  * Set the default range for potentiometer readings.
  * 
  * @param min  The minimum value for the potentiometer range.
