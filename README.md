@@ -1,4 +1,4 @@
-# GBALib Potentiometer v2.1.0
+# GBALib Potentiometer v2.1.1
 
 ![Arduino Logo](./extras/ArduinoCommunityLogo.png)
 
